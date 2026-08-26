@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasta Ria | باستا ريا</title>
+<meta name="description" content="Pasta Ria - Italian pasta and pizza, made fresh daily. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette matched to the Pasta Ria logo: deep purple background, bright yellow text/accents.
+       Note: --cream now HOLDS THE PURPLE value (used for backgrounds & as dark text on light/yellow
+       surfaces), and --olive now HOLDS THE YELLOW value (used for accents/headings & as bright text
+       on the purple background) — names kept as-is to avoid touching every rule below. */
+    --cream:#60085E;       /* purple — page/section backgrounds, and dark text on light/yellow chips */
+    --parchment:#7A3B79;   /* purple-soft — box backgrounds (extras, half&half), hover highlight */
+    --olive:#F7E107;       /* yellow — headings, buttons, active states, main accent text */
+    --olive-soft:#FFEE55;  /* lighter yellow — hover state */
+    --tomato:#FFB100;      /* amber — prices, cart badge */
+    --gold:#F2C94C;        /* soft gold — decorative rules, eyebrow, group titles */
+    --ink:#F6E9C8;         /* pale warm cream — default body text on the purple background */
+    --muted:#C9A9CE;       /* light lavender — secondary/muted text on the purple background */
+    --line: rgba(248,231,1,0.22);
+    --white:#FFFEFC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  h1,h2,h3,.display{font-family:'Fraunces', serif;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:960px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 22px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-badge{
+    width:40px; height:40px; border-radius:50%;
+    object-fit:cover; flex-shrink:0;
+    box-shadow:0 0 0 1.5px var(--line);
+  }
+  .brand-name{
+    font-family:'Fraunces'; font-style:italic; font-weight:600;
+    color:var(--olive); font-size:21px; letter-spacing:0.2px;
+  }
+  .header-cta{display:flex; align-items:center; gap:18px;}
+  .icon-link{
+    color:var(--olive); font-size:19px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    background:none; border:none; cursor:pointer;
+  }
+  .cart-badge{
+    position:absolute; top:-8px; left:-10px;
+    background:var(--tomato); color:var(--white); font-family:'Fraunces';
+    font-weight:700; font-size:10px; width:17px; height:17px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:56px 22px 44px; text-align:center;
+    max-width:640px; margin:0 auto;
+    position:relative; overflow:hidden; z-index:0;
+  }
+  .hero-doodle{
+    position:absolute; top:-20px; right:-40px; width:300px; max-width:65%;
+    opacity:0.28; pointer-events:none; z-index:-1;
+  }
+
+  /* ===== Brand marquee strip ===== */
+  .brand-marquee{
+    overflow:hidden; white-space:nowrap;
+    background:var(--cream);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .brand-marquee-track{
+    display:inline-block; white-space:nowrap;
+    animation:marquee-scroll 20s linear infinite;
+  }
+  .brand-marquee-track img{
+    height:70px; display:inline-block; margin:0 14px; vertical-align:middle;
+  }
+  @keyframes marquee-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ===== Footer logo ===== */
+  .footer-logo{
+    max-width:280px; width:75%; margin:0 auto 14px;
+  }
+  .hero-mark{ width:64px; height:64px; border-radius:50%; margin:0 auto 20px; object-fit:cover; box-shadow:0 0 0 1.5px var(--line); }
+  .hero-eyebrow{
+    font-size:12.5px; letter-spacing:2.5px; color:var(--gold);
+    font-weight:600; text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .hero h1{
+    font-size:46px; font-style:italic; font-weight:600; color:var(--olive);
+    line-height:1.1; margin-bottom:14px;
+  }
+  .hero p{
+    font-size:15.5px; color:var(--muted); font-weight:500;
+    max-width:440px; margin:0 auto 30px; line-height:1.7;
+  }
+  .hero-rule{
+    width:60px; height:1px; background:var(--gold); margin:0 auto 30px;
+  }
+  .hero-buttons{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Cairo'; font-weight:700; font-size:14.5px;
+    padding:13px 26px; border-radius:3px; border:1.5px solid var(--olive);
+    cursor:pointer; transition:all .2s ease;
+  }
+  .btn-primary{background:var(--olive); color:var(--cream);}
+  .btn-primary:hover{background:var(--olive-soft);}
+  .btn-outline{background:transparent; color:var(--olive);}
+  .btn-outline:hover{background:var(--parchment);}
+
+  /* ===== Category Nav ===== */
+  .cat-nav{
+    position:sticky; top:70px; z-index:90;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto; white-space:nowrap;
+    padding:0 22px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cat-nav::-webkit-scrollbar{display:none;}
+  .cat-nav-inner{display:inline-flex; gap:26px; max-width:960px;}
+  .cat-pill{
+    font-family:'Cairo'; font-weight:600; font-size:13.5px;
+    color:var(--muted); padding:14px 0 12px; cursor:pointer; flex-shrink:0;
+    border-bottom:2px solid transparent;
+    background:none; border-top:none; border-left:none; border-right:none;
+    -webkit-appearance:none; appearance:none;
+  }
+  .cat-pill.active{color:var(--olive); border-bottom-color:var(--tomato);}
+
+  /* ===== Menu ===== */
+  main{max-width:720px; margin:0 auto; padding:6px 22px 40px;}
+  .menu-section{padding-top:44px; scroll-margin-top:150px;}
+  .section-head{text-align:center; margin-bottom:8px;}
+  .section-head h2{
+    font-size:28px; font-style:italic; font-weight:600; color:var(--olive);
+  }
+  .section-head .ar-tag{
+    display:block; font-family:'Cairo'; color:var(--muted); font-size:13px;
+    margin-top:4px; font-weight:500;
+  }
+  .section-rule{width:34px; height:1px; background:var(--gold); margin:16px auto 26px;}
+  .group-title{
+    font-family:'Fraunces'; font-style:italic; font-weight:600; color:var(--gold);
+    font-size:15px; margin:26px 0 4px;
+  }
+
+  .menu-row{
+    display:flex; align-items:baseline; gap:8px;
+    padding:15px 0; border-bottom:1px solid var(--line);
+  }
+  .menu-row-main{flex:1; min-width:0;}
+  .menu-row-name{
+    font-family:'Fraunces'; font-weight:600; font-size:16.5px; color:var(--ink);
+  }
+  .menu-row-arabic{
+    font-family:'Cairo'; font-size:12.5px; color:var(--muted); margin-top:3px; font-weight:500;
+  }
+  .menu-row-desc{font-size:12px; color:var(--muted); margin-top:4px; line-height:1.5;}
+  .menu-row-price{
+    font-family:'Fraunces'; font-weight:700; color:var(--tomato); font-size:15.5px;
+    flex-shrink:0; white-space:nowrap;
+  }
+  .size-row{display:flex; gap:14px; margin-top:8px; flex-wrap:wrap;}
+  .size-chip{font-size:12px; color:var(--muted); font-weight:600;}
+  .size-chip b{color:var(--tomato); font-family:'Fraunces';}
+  .row-actions{margin-top:9px; display:flex; flex-wrap:wrap; gap:8px;}
+  .add-link{
+    font-family:'Cairo'; font-weight:700; font-size:12px;
+    color:var(--olive); border:1px solid var(--olive); border-radius:20px;
+    padding:5px 13px; cursor:pointer; background:none;
+  }
+  .add-link:hover{background:var(--olive); color:var(--cream);}
+
+  /* Toppings table */
+  .topping-table{width:100%; border-collapse:collapse; margin-top:16px;}
+  .topping-table th, .topping-table td{
+    padding:9px 8px; text-align:center; font-size:12.5px;
+    border-bottom:1px solid var(--line);
+  }
+  .topping-table th{font-family:'Cairo'; font-weight:700; color:var(--olive);}
+  .topping-table td:first-child{text-align:right; font-family:'Cairo'; font-weight:600;}
+  .table-wrap{overflow-x:auto;}
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--olive); color:var(--cream);
+    padding:46px 22px 34px; margin-top:56px; text-align:center;
+  }
+  footer .brand-name{
+    font-family:'Fraunces'; font-style:italic; font-weight:600; font-size:26px; color:var(--cream);
+    margin-bottom:12px;
+  }
+  footer p{color:var(--parchment); font-size:14px; margin-bottom:20px;}
+  .footer-contacts{display:flex; justify-content:center; gap:12px; flex-wrap:wrap;}
+  .footer-contacts a{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1.5px solid var(--cream); color:var(--cream); font-weight:700;
+    font-family:'Cairo'; padding:10px 20px; border-radius:3px; font-size:13.5px;
+  }
+  .footer-social{color:var(--cream); font-weight:600; margin-top:20px; font-size:13px;}
+  .footer-note{color:var(--parchment); font-size:11.5px; margin-top:26px;}
+
+  .float-wa{
+    position:fixed; bottom:20px; left:20px; z-index:200;
+    background:var(--olive); color:var(--cream); width:52px; height:52px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+    box-shadow:0 4px 14px rgba(42,39,31,0.3);
+  }
+
+  /* ===== Cart ===== */
+  .cart-overlay{
+    position:fixed; inset:0; background:rgba(42,39,31,0.55); z-index:300;
+    display:none; align-items:flex-end; justify-content:center;
+  }
+  .cart-overlay.open{display:flex;}
+  .cart-drawer{
+    background:var(--cream); width:100%; max-width:480px; max-height:88vh;
+    border-radius:14px 14px 0 0; display:flex; flex-direction:column; overflow:hidden;
+  }
+  .cart-header{
+    background:var(--olive); color:var(--cream); padding:18px 22px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Fraunces'; font-style:italic; font-weight:600; font-size:19px;
+  }
+  .cart-close{background:none; border:none; color:var(--cream); font-size:20px; cursor:pointer;}
+  .cart-items{padding:12px 22px; overflow-y:auto; flex:1;}
+  .cart-empty{text-align:center; color:var(--muted); padding:34px 0; font-weight:600; font-size:14px;}
+  .cart-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:11px 0; border-bottom:1px solid var(--line); gap:10px;
+  }
+  .cart-item-name{font-weight:700; font-size:14px; font-family:'Cairo';}
+  .cart-item-sub{font-size:11.5px; color:var(--muted); font-weight:500;}
+  .qty-controls{display:flex; align-items:center; gap:9px;}
+  .qty-btn{
+    width:24px; height:24px; border-radius:50%; border:1px solid var(--cream);
+    background:var(--white); font-weight:700; cursor:pointer; font-size:13px; color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .qty-num{font-family:'Fraunces'; font-weight:700; min-width:14px; text-align:center;}
+  .cart-item-price{font-family:'Fraunces'; font-weight:700; color:var(--tomato); min-width:64px; text-align:left; font-size:14px;}
+  .cart-footer{padding:16px 22px 22px; border-top:1px solid var(--line); background:var(--white);}
+  .cart-form{display:flex; flex-direction:column; gap:9px; margin-bottom:14px;}
+  .cart-form input, .cart-form textarea{
+    font-family:'Cairo'; padding:11px 13px; border-radius:6px; border:1px solid var(--line);
+    font-size:13.5px; background:var(--cream);
+  }
+  .cart-total-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Fraunces'; font-weight:700; font-size:18px; margin-bottom:14px;
+    color:var(--cream);
+  }
+  .send-order-btn{
+    width:100%; background:#25D366; color:white; border:none;
+    font-family:'Cairo'; font-weight:700; font-size:15px; padding:14px; border-radius:6px;
+    cursor:pointer;
+  }
+
+  @media (max-width:600px){
+    .hero h1{font-size:36px;}
+    .cat-nav{top:64px;}
+  }
+
+  /* ===== Notes & Extras (added) ===== */
+  .note-input{
+    width:100%; font-family:'Cairo'; font-size:12px; color:var(--cream);
+    border:1px dashed var(--line); border-radius:6px; padding:8px 10px;
+    margin-top:10px; background:var(--white);
+  }
+  .note-input::placeholder{color:#9B7A9A;}
+  .size-chip-radio{
+    display:inline-flex; align-items:center; gap:5px; font-size:12px;
+    color:var(--muted); font-weight:600; cursor:pointer; padding:4px 9px;
+    border:1px solid var(--line); border-radius:20px;
+  }
+  .size-chip-radio input{accent-color:var(--tomato); margin:0;}
+  .size-chip-radio b{color:var(--tomato); font-family:'Fraunces';}
+  .extras-wrap:empty{display:none;}
+  .extras-box{
+    margin-top:10px; padding:10px 12px; background:var(--parchment);
+    border-radius:8px;
+  }
+  .extras-title{
+    font-family:'Cairo'; font-weight:700; font-size:11.5px; color:var(--olive);
+    margin-bottom:7px;
+  }
+  .extra-chip{
+    display:inline-flex; align-items:center; gap:5px; font-size:12px;
+    color:var(--cream); font-weight:600; cursor:pointer; padding:4px 10px;
+    margin:0 4px 6px 0; background:var(--white); border:1px solid var(--line);
+    border-radius:16px;
+  }
+  .extra-chip input{accent-color:var(--tomato); margin:0;}
+  .extra-chip b{color:var(--tomato); font-family:'Fraunces'; font-weight:700;}
+  .group-note{
+    font-size:12px; color:var(--muted); text-align:center; margin:-6px 0 18px;
+    line-height:1.6; font-style:italic;
+  }
+  .add-btn{
+    flex:1; justify-content:center; padding:11px 13px !important; min-width:140px;
+  }
+  .item-qty-stepper{
+    display:flex; align-items:center; gap:10px;
+    border:1px solid var(--line); border-radius:20px; padding:6px 12px;
+    flex-shrink:0;
+  }
+  .item-qty-stepper .qty-btn{ width:22px; height:22px; font-size:12px; }
+  .item-qty-stepper .qty-num{ font-family:'Fraunces'; font-weight:700; min-width:14px; text-align:center; }
+  .cart-item-extras{font-size:11px; color:var(--muted); margin-top:2px;}
+  .cart-item-note{font-size:11px; color:var(--tomato); margin-top:2px; font-weight:600;}
+  .row-actions{ align-items:center; }
+
+  /* ===== Half & Half (added) ===== */
+  .half-half-wrap{
+    margin-top:10px; padding:10px 12px; background:var(--parchment);
+    border-radius:8px; border:1px dashed var(--gold);
+  }
+  .half-half-toggle{
+    display:flex; align-items:center; gap:7px; font-family:'Cairo';
+    font-weight:700; font-size:12px; color:var(--olive); cursor:pointer;
+  }
+  .half-half-toggle input{accent-color:var(--tomato); margin:0;}
+  .half-select{
+    width:100%; margin-top:9px; font-family:'Cairo'; font-size:12.5px;
+    padding:9px 10px; border-radius:6px; border:1px solid var(--line);
+    background:var(--white); color:var(--cream);
+  }
+  .size-chip-radio input:disabled{opacity:0.5;}
+
+  /* ===== Dough type & oven add-on (added) ===== */
+  .dough-row{
+    display:flex; align-items:center; gap:10px; margin-top:9px; flex-wrap:wrap;
+  }
+  .dough-label{font-family:'Cairo'; font-weight:700; font-size:12px; color:var(--muted);}
+  .dough-chip{
+    display:inline-flex; align-items:center; gap:5px; font-size:12px;
+    color:var(--muted); font-weight:600; cursor:pointer; padding:4px 10px;
+    border:1px solid var(--line); border-radius:20px;
+  }
+  .dough-chip input{accent-color:var(--tomato); margin:0;}
+  .oven-chip{background:var(--parchment); color:var(--olive);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img class="brand-badge" src="images/logo-badge-95adeef9.jpg" alt="Pasta Ria logo">
+      <div class="brand-name">Pasta Ria</div>
+    </div>
+    <div class="header-cta">
+      <a class="icon-link" href="tel:01270955559" title="اتصال">📞</a>
+      <button class="icon-link" id="cartOpenBtn" title="السلة">🛍<span class="cart-badge" id="cartBadge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="hero-doodle" src="images/doodle-pasta-7acad41c.jpg" alt="" aria-hidden="true">
+  <img class="hero-mark" src="images/logo-badge-95adeef9.jpg" alt="Pasta Ria logo">
+  <span class="hero-eyebrow">Est. Cairo · Fresh Daily</span>
+  <h1>Pasta Ria</h1>
+  <p>أهلًا بيك في Pastaria…<br>لو إيطاليا كانت بعيدة… إحنا قربناها ليك لحد الفيوم! 🇮🇹<br><br>باستا على أصولها، وبيتزا بطعم إيطالي…<br>فإنت أكيد في المكان الصح</p>
+  <div class="hero-rule"></div>
+  <div class="hero-buttons">
+    <button type="button" onclick="scrollToSection('pizza')" class="btn btn-outline">View Menu</button>
+    <a href="https://wa.me/201270955559" target="_blank" class="btn btn-primary">Order on WhatsApp</a>
+  </div>
+</section>
+
+<div class="brand-marquee" aria-hidden="true">
+  <div class="brand-marquee-track">
+    <img src="images/marquee-wordmark-77ec2cce.jpg" alt="">
+    <img src="images/marquee-wordmark-77ec2cce.jpg" alt="">
+  </div>
+</div>
+
+<nav class="cat-nav" id="catNav">
+  <div class="cat-nav-inner" id="catNavInner"></div>
+</nav>
+
+<main id="menuRoot"></main>
+
+<footer>
+  <img class="footer-logo" src="images/logo-tagline-eae935da.jpg" alt="Pasta Ria - Your Next Favorite Italian Experience">
+  <p>عايز تطلب دلوقتي؟ كلمنا على أي حد من الأرقام دي</p>
+  <div class="footer-contacts">
+    <a href="https://wa.me/201270955559" target="_blank">WhatsApp</a>
+    <a href="tel:01270955559">01270955559</a>
+    <a href="https://www.facebook.com/share/19Wz1QHhhF/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/pastariaegy?igsi=MXdmM2xnbHZlN3RhcA==" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/share/19Wz1QHhhF/" target="_blank">Facebook</a> ·
+    <a href="https://www.instagram.com/pastariaegy?igsi=MXdmM2xnbHZlN3RhcA==" target="_blank">Instagram — @PASTARIAEGY</a>
+  </div>
+  <div class="footer-note">© Pasta Ria — الأسعار قابلة للتغيير بدون إشعار مسبق</div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/201270955559" target="_blank" title="اطلب على واتساب">💬</a>
+
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-drawer">
+    <div class="cart-header">
+      <span>Your Order</span>
+      <button class="cart-close" id="cartCloseBtn">✕</button>
+    </div>
+    <div class="cart-items" id="cartItemsWrap">
+      <div class="cart-empty">السلة فاضية - اختار من المنيو</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total-row"><span>الإجمالي</span><span id="cartTotal">0 ج.م</span></div>
+      <div class="cart-form">
+        <input type="text" id="custName" placeholder="الاسم">
+        <input type="tel" id="custPhone" placeholder="رقم الموبايل">
+        <textarea id="custAddress" placeholder="العنوان بالتفصيل" rows="2"></textarea>
+      </div>
+      <button class="send-order-btn" id="sendOrderBtn">إرسال الطلب على واتساب</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== Shared pizza extras (add-ons), priced per size ===== //
+const pizzaExtras = [
+  {ar:"موتزاريلا", prices:{"صغير":49,"وسط":55,"كبير":65}},
+  {ar:"دجاج", prices:{"صغير":45,"وسط":55,"كبير":65}},
+  {ar:"لحوم", prices:{"صغير":50,"وسط":59,"كبير":68}},
+  {ar:"مشروم", prices:{"صغير":49,"وسط":55,"كبير":68}},
+  {ar:"شريمب", prices:{"صغير":64,"وسط":77,"كبير":86}},
+  {ar:"استافد كراست موتزاريلا", prices:{"وسط":59,"كبير":69}},
+  {ar:"استافد كراست سوسيس", prices:{"وسط":59,"كبير":69}},
+];
+
+const menuData = [
+  {
+    id:"pizza", title:"Pizza", ar:"بيتزا",
+    groups:[
+      { name:"Classic Round Pizza",
+        note:"كل بيتزا تقدر تضيفلها إضافات من جوا الصنف نفسه 👇",
+        items:[
+          {en:"Margherita", ar:"مارجريتا", desc:"صلصة طماطم بالتوابل الإيطالية، موتزاريلا بريميم، زعتر", sizes:[["صغير",109],["وسط",149],["كبير",189]], extras:pizzaExtras},
+          {en:"Pepperoni", ar:"بيبروني", desc:"صلصة طماطم بالتوابل الإيطالية، موتزاريلا بريميم، بيبروني", sizes:[["صغير",139],["وسط",189],["كبير",259]], extras:pizzaExtras},
+          {en:"Chicken Ranch", ar:"تشكن رانش", desc:"دجاج مشوي، فلفل ألوان، موتزاريلا بريميم، صوص الرانش", sizes:[["صغير",160],["وسط",220],["كبير",259]], extras:pizzaExtras},
+          {en:"Chili Mushroom", ar:"شيلي مشروم", desc:"صلصة طماطم بالتوابل الإيطالية، موتزاريلا بريميم، مشروم، فلفل حار", sizes:[["صغير",139],["وسط",165],["كبير",199]], extras:pizzaExtras},
+          {en:"Cheesy Mix", ar:"تشيزي ميكس", desc:"فيتا، رومي، شيدر، بارميزان وموتزاريلا بريميم", sizes:[["صغير",149],["وسط",189],["كبير",279]], extras:pizzaExtras},
+          {en:"Supremo Beef", ar:"سوبريمو بيف", desc:"لحم بيف مشوي، بصل، فلفل أحمر مشوي، موتزاريلا بريميم", sizes:[["صغير",190],["وسط",270],["كبير",345]], extras:pizzaExtras},
+          {en:"Shrimp", ar:"شريمب", desc:"صلصة طماطم بالتوابل الإيطالية، موتزاريلا بريميم، جمبري مشوي، بصل، زيتون", sizes:[["صغير",220],["وسط",290],["كبير",369]], extras:pizzaExtras},
+          {en:"Fiery Chicken", ar:"فايري تشكن", desc:"عجينة بيتزا، صلصة طماطم، قطع فرايد تشكن حار، موتزاريلا بصوص فايري", sizes:[["صغير",175],["وسط",235],["كبير",275]], extras:pizzaExtras},
+          {en:"Twist Doner", ar:"تويست دونر", desc:"عجينة بيتزا، صلصة طماطم، دونر كباب، لحم مفروم، موتزاريلا بصوص تكساس", sizes:[["صغير",175],["وسط",257],["كبير",339]], extras:pizzaExtras},
+          {en:"Sea Ranch", ar:"سي رانش", desc:"عجينة بيتزا، صوص وايت، جمبري مشوي بالتوابل الخاصة، أصابع الرانش وموتزاريلا بريميم", sizes:[["صغير",240],["وسط",315],["كبير",399]], extras:pizzaExtras},
+        ]
+      },
+      { name:"Ria Pan Pizza",
+        items:[
+          {en:"Grilled Chicken", ar:"جريلد تشكن", desc:"صلصة طماطم، دجاج مشوي، بصل أبيض وصوص الرانش", sizes:[["لاين",149],["لارج",209]]},
+          {en:"Fiery Chicken", ar:"فايري تشكن", desc:"صلصة طماطم، قطع دجاج فرايد حارة، صوص تشكن حار", sizes:[["لاين",155],["لارج",229]]},
+          {en:"Double Pepperoni", ar:"دابل بيبروني", desc:"صلصة طماطم، بيبروني مضاعف، صوص باربكيو", sizes:[["لاين",165],["لارج",234]]},
+          {en:"Spicy Yaya", ar:"سبايسي يايا", desc:"صلصة طماطم، سجق شرقي، فلفل ألوان، موتزاريلا بريميم", sizes:[["لاين",178],["لارج",265]]},
+          {en:"Super Yaya", ar:"سوبر يايا", desc:"صلصة طماطم، سوسيس، بيبروني، موتزاريلا بريميم وصوص شيدر", sizes:[["لاين",189],["لارج",275]]},
+          {en:"Twist Doner", ar:"تويست دونر", desc:"صلصة طماطم، دونر كباب، لحم مفروم، موتزاريلا بريميم وصوص تكساس", sizes:[["لاين",217],["لارج",299]]},
+          {en:"Cheese Burger", ar:"تشيز برجر", desc:"جبنة كريمي، لحم مفروم، خيار مخلل، بصل أحمر وموتزاريلا بصوص الكسساس", sizes:[["لاين",217],["لارج",309]]},
+          {en:"Sea Ranch", ar:"سي رانش", desc:"صوص وايت، جمبري مشوي بالتوابل الخاصة، أصابع الرانش وموتزاريلا بريميم", sizes:[["لاين",222],["لارج",315]]},
+        ]
+      },
+    ],
+  },
+  {
+    id:"italian", title:"Italian Classic Pasta", ar:"إيطالي كلاسيك",
+    groups:[{ name:"", note:"كل الأطباق تقدم مع اختيارك من باستا بيني أو فيتوتشيني", items:[
+      {en:"Arrabbiata", ar:"أرابياتا", desc:"صوص أرابياتا حار، مشروم، فلفل ألوان، طماطم شيري", price:118},
+      {en:"Chicken Alfredo", ar:"تشكن ألفريدو", desc:"صوص ألفريدو كريمي، دجاج مشوي، بارميزان، مشروم فريش", price:169},
+      {en:"Bolognese", ar:"بولونيز", desc:"صوص راقو بيف مع الطماطم الطازجة، مطهو ببطء مع التوابل الإيطالية", price:195},
+      {en:"Chicken Pesto", ar:"تشكن بيستو", desc:"صوص بيستو أخضر، دجاج مشوي، طماطم شيري", price:199},
+      {en:"Marry Me Shrimp", ar:"ماري مي شريمب", desc:"صوص كريمي بالجمبري، توابل خاصة وبارميزان", price:249},
+      {en:"Carbonara", ar:"كاربونارا", desc:"صوص وايت كريمي، بيف بسطرمة وبارميزان", price:209},
+    ]}]
+  },
+  {
+    id:"oven", title:"Oven Pasta", ar:"باستا الفرن",
+    groups:[{ name:"", items:[
+      {en:"Negresco Béchamel", ar:"بشاميل نجرسكو", desc:"باستا فيتوتشيني مغطاة بصوص البشاميل وجبن الموتزاريلا", price:175},
+      {en:"Chicken Lasagna", ar:"لازانيا دجاج", desc:"طبقات لازانيا إيطالية مع الدجاج المشيل بصوص البشاميل وجبن الموتزاريلا", price:227},
+      {en:"Shrimp Béchamel", ar:"بشاميل شريمب", desc:"باستا بصوص البشاميل مع الجمبري المشوي وجبن الموتزاريلا", price:269},
+      {en:"Minced Beef Lasagna", ar:"لازانيا لحم مفروم", desc:"طبقات لازانيا إيطالية مع اللحم المفروم بصوص البشاميل وجبن الموتزاريلا", price:259},
+    ]}]
+  },
+  {
+    id:"skillets", title:"Sizzling Skillets", ar:"سيزلينج سكيليت",
+    groups:[{ name:"", note:"يُقدّم كل طبق من الأطباق دي مع اختيارك من بيني أو فيتوتشيني باستا مع صوص أحمر أو أبيض", items:[
+      {en:"On Fire Chicken", ar:"أون فاير تشيكن", price:235, desc:"دجاج بصوص ريد مع بصل-فلفل احمر مشوي والخلطة الحارة"},
+      {en:"Beef Steak", ar:"بيف ستيك", price:329, desc:"بيف ستيك مشوي مع جمبري جامبو-بصل احمر-فلفل مشوي"},
+      {en:"Fusion Shrimp Pasta", ar:"فيوجن شريمب باستا", desc:"جمبري مشوي مع صوص خاص وخضار مشوية", price:335},
+      {en:"Grilled Chicken Fahita", ar:"جريلد تشكن فاهيتا سكليت", desc:"صدور دجاج مشوي مع صوص طماطم بالتوابل الإيطالية وباستا بيني أو فيتوتشيني", price:235},
+    ]}]
+  },
+  {
+    id:"signature", title:"Pastaria Signature", ar:"باستاريا سيجنتشر",
+    groups:[{ name:"", items:[
+      {en:"Cajun Chicken", ar:"تشكن كيجن باستا", desc:"صوص وايت مع صوص كيجن الحار، دجاج مشوي وفلفل مشوي", price:175},
+      {en:"Buffalo Chicken", ar:"بافيلو تشكن باستا", desc:"صوص وايت مع صوص البافلو الحار، قطع دجاج مقرمشة والسمسم", price:164},
+      {en:"Meat Lovers", ar:"ميت لوفرز باستا", desc:"صوص طماطم إيطالي مع قطع سجق، بسطرمة ولحم مفروم", price:219},
+      {en:"Chicken Mac & Cheese", ar:"تشكن بويس ماك اند تشيز باستا", desc:"صوص شيدر غني بالمكونات الطبيعية مع قطع الدجاج المقرمش", price:189},
+      {en:"Smoked Chicken", ar:"سموكيد تشكن باستا", desc:"صوص وايت مع قطع دجاج مدخن وتوابل مشوية", price:229},
+      {en:"Majesty Shrimp", ar:"ماجيستي شريمب باستا", price:229},
+      {en:"Cheesy Crispy", ar:"تشيزي كرسبي باستا", price:229},
+      {en:"Sweet & Sour Shrimp", ar:"شريمب سويت اند ساور باستا", desc:"جمبري مشوي مع صوص السويت اند ساور والأناناس والسمسم", price:259},
+      {en:"Fantai Beef", ar:"فانتاي بيف باستا", price:247},
+      {en:"Beef Piccata Mushrooms", ar:"بيف بيكاتا بالمشروم", price:311},
+      {en:"Cordon Bleu", ar:"كوردن بلو باستا", price:259},
+      {en:"Chicken Piccata with Mushrooms", ar:"تشيكن بيكاتا بالمشروم", desc:"صدور دجاج مع صوص كريمي وجريفي والمشروم", price:249},
+    ]}]
+  },
+  {
+    id:"starters", title:"Starters & Loaded Fries", ar:"ستارترز ولودد فرايز",
+    groups:[{ name:"", items:[
+      {en:"Bruschetta", ar:"بروسكيتا", price:65, desc:"8 خبز محمص بالثوم والزعتر مغطاة بالموتزاريلا"},
+      {en:"Ranch Fries", ar:"رانش فرايز", desc:"فرايز خفيفة مع صوص الرانش وفلفل ألوان", price:62},
+      {en:"Chicken Popcorn", ar:"تشكن بوب كورن", desc:"4 قطع دجاج مقرمشة تقدم مع صوص الديب", price:79},
+      {en:"Cheese Dream Fries", ar:"تشيز دريم فرايز", desc:"فرايز مغطاة بمكس الجبن والموتزاريلا وفلفل ألوان", price:99},
+      {en:"Spicy Chicken Fries", ar:"سبايسي تشكن فرايز", desc:"فرايز مع قطع دجاج حارة مقرمشة وصوص شيدر", price:125},
+      {en:"Jalapeño Fries", ar:"هالبينو فرايز", desc:"فرايز مع لحم مفروم، هالبينو، موتزاريلا وصوص شيدر", price:135},
+    ]}]
+  },
+  {
+    id:"kids", title:"Kids Meals", ar:"وجبات أطفال",
+    groups:[{ name:"", items:[
+      {en:"Chicken Galzone", ar:"كليزوني دجاج", desc:"عجينة بيتزا محشية بصدور دجاج مشوي وموتزاريلا، تقدم مع فرايز", price:109},
+      {en:"Pasta Pops", ar:"باستا بوبس", desc:"باستا بصوص وايت مع قطع الدجاج المقرمشة", price:132},
+    ]}]
+  },
+  {
+    id:"dessert", title:"Dessert", ar:"حلويات",
+    groups:[{ name:"", items:[
+      {en:"Chocolate Calzone", ar:"كليزوني شوكلت", desc:"عجينة بيتزا محمصة بحشو شوكولاتة بالبندق", price:85},
+      {en:"Oreo Calzone", ar:"كليزوني أوريو", desc:"عجينة بيتزا محمصة بحشو وايت شوكلت وأوريو", price:92},
+      {en:"Classic Tiramisu", ar:"تيراميسو كلاسيك", desc:"طبقات من أصابع البسكويت وكريمة الجبنة بطعم الإسبريسو الإيطالي", price:200},
+      {en:"Chocolate Tiramisu", ar:"تيراميسو شوكلت", desc:"طبقات من أصابع البسكويت وكريمة الجبنة بطعم الشوكولاتة والبندق", price:200},
+    ]}]
+  },
+  {
+    id:"salads", title:"Salads & Soups", ar:"سلطات وشوربة",
+    groups:[{ name:"", items:[
+      {en:"Coleslaw", ar:"كولسلو", desc:"كرنب أبيض وجزر بصوص الكولسلو المميز", price:40},
+      {en:"Creamy Chicken", ar:"تشكن كريمي", desc:"دجاج كريمي بصوص توابل خاصة", price:88},
+      {en:"Creamy Mushroom", ar:"مشروم كريمي", desc:"مشروم كريمي بصوص توابل خاصة", price:88},
+      {en:"Caesar", ar:"سيزر", price:129},
+    ]}]
+  },
+  {
+    id:"drinks", title:"Drinks & Dressing", ar:"مشروبات وصوصات",
+    groups:[
+      { name:"Drinks", items:[
+        {en:"Small Water", ar:"مياة صغيرة", price:12},
+        {en:"V Cola", ar:"في كولا", price:35},
+      ]},
+      { name:"Sauces", items:[
+        {en:"Texas", ar:"تكساس", price:20},
+        {en:"Sweet Chili", ar:"سويت شيلي", price:20},
+        {en:"Fiery", ar:"فايري", price:20},
+        {en:"Ranch", ar:"رانش", price:20},
+        {en:"BBQ", ar:"باربكيو", price:20},
+        {en:"Cheddar", ar:"شيدر", price:25},
+      ]}
+    ]
+  },
+];
+
+const nav = document.getElementById('catNavInner');
+const root = document.getElementById('menuRoot');
+
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const headerOffset = 150; // account for sticky header + cat-nav
+  const top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+// ===== per-item runtime state ===== //
+const itemState = {};
+const itemDefs  = {};
+let itemCounter = 0;
+// Registry of pizza items eligible for "half & half", keyed by itemId -> {en, ar, sizeLabel, price}
+const pizzaLargeRegistry = {};
+
+function renderItem(item, sectionId){
+  const itemId = 'it' + (itemCounter++);
+  itemDefs[itemId] = item;
+
+  const defaultSize = item.sizes ? item.sizes[0] : null;
+  itemState[itemId] = {
+    sizeLabel: defaultSize ? defaultSize[0] : null,
+    sizePrice: defaultSize ? defaultSize[1] : item.price,
+    extras: {},
+    note: '',
+    qty: 1,
+    half: false,
+    halfWith: null,
+    dough: 'عادي',
+    ovenAdd: false
+  };
+  if(item.extras){
+    item.extras.forEach((ex,i)=>{ itemState[itemId].extras[i] = false; });
+  }
+
+  // Register pizza items with more than one size as eligible for half & half,
+  // using their largest size tier as the "large" reference.
+  const isPizza = sectionId === 'pizza' && item.sizes && item.sizes.length > 1;
+  let largestLabel = null;
+  if(isPizza){
+    const largest = item.sizes[item.sizes.length - 1];
+    largestLabel = largest[0];
+    pizzaLargeRegistry[itemId] = { en: item.en, ar: item.ar, sizeLabel: largest[0], price: largest[1] };
+  }
+  itemDefs[itemId]._isPizza = isPizza;
+  itemDefs[itemId]._largestLabel = largestLabel;
+
+  // Pasta dishes (Italian Classic, Signature, Sizzling Skillets) can be converted
+  // to an oven-baked mozzarella version for +60 LE, per the printed menu note.
+  const isOvenEligible = ['italian','signature','skillets'].includes(sectionId) && !item.sizes;
+  itemDefs[itemId]._isOvenEligible = isOvenEligible;
+
+  let sizesHtml = '';
+  if(item.sizes){
+    sizesHtml = `<div class="size-row" id="sizerow_${itemId}">` + item.sizes.map((s,i)=>`
+      <label class="size-chip-radio">
+        <input type="radio" name="size_${itemId}" ${i===0 ? 'checked' : ''} onchange="selectSize('${itemId}','${s[0]}',${s[1]})">
+        <span>${s[0]} <b>${s[1]}</b></span>
+      </label>`).join('') + `</div>`;
+  }
+
+  const doughHtml = isPizza ? `<div class="dough-row">
+      <span class="dough-label">العجينة:</span>
+      <label class="dough-chip">
+        <input type="radio" name="dough_${itemId}" checked onchange="selectDough('${itemId}','عادي')">
+        <span>عادي</span>
+      </label>
+      <label class="dough-chip">
+        <input type="radio" name="dough_${itemId}" onchange="selectDough('${itemId}','حبة كاملة')">
+        <span>حبة كاملة</span>
+      </label>
+    </div>` : '';
+
+  const halfHtml = isPizza ? `<div class="half-half-wrap" id="halfwrap_${itemId}" style="display:none;">
+      <label class="half-half-toggle">
+        <input type="checkbox" onchange="toggleHalf('${itemId}', this.checked)">
+        <span>🍕 نص ونص — قسّمها مع فلافور تاني (${largestLabel})</span>
+      </label>
+      <select class="half-select" id="halfselect_${itemId}" style="display:none;" onchange="selectHalfPartner('${itemId}', this.value)"></select>
+    </div>` : '';
+
+  const ovenHtml = isOvenEligible ? `<label class="extra-chip oven-chip">
+      <input type="checkbox" onchange="toggleOvenAdd('${itemId}', this.checked)">
+      <span>🔥 حوّلها طبق فرن بالموتزاريلا <b>+60</b></span>
+    </label>` : '';
+
+  return `<div class="menu-row" id="row_${itemId}">
+    <div class="menu-row-main">
+      <div class="menu-row-name">${item.en}</div>
+      <div class="menu-row-arabic">${item.ar}</div>
+      ${item.desc ? `<div class="menu-row-desc">${item.desc}</div>` : ''}
+      ${!item.sizes && item.price ? `<div class="menu-row-desc" style="margin-top:6px;"></div>` : ''}
+      ${sizesHtml}
+      ${doughHtml}
+      ${halfHtml}
+      <div class="extras-wrap" id="extras_${itemId}">${extrasHtml(itemId)}${ovenHtml}</div>
+      <input type="text" class="note-input" id="note_${itemId}" placeholder="ملاحظة على الطلب (اختياري) — مثال: من غير بصل" onchange="setNote('${itemId}', this.value)">
+      <div class="row-actions">
+        <div class="item-qty-stepper">
+          <button type="button" class="qty-btn" onclick="changeItemQty('${itemId}',-1)">−</button>
+          <span class="qty-num" id="qty_${itemId}">1</span>
+          <button type="button" class="qty-btn" onclick="changeItemQty('${itemId}',1)">+</button>
+        </div>
+        <button class="add-link add-btn" onclick="addItemToCart('${itemId}')">🛍 أضف للسلة — <span id="price_${itemId}">${itemState[itemId].sizePrice}</span> ج.م</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+
+function extrasHtml(itemId){
+  const item = itemDefs[itemId];
+  const st = itemState[itemId];
+  if(!item.extras) return '';
+  let rows = item.extras.map((ex,i)=>{
+    const p = ex.prices[st.sizeLabel];
+    if(p == null) return '';
+    return `<label class="extra-chip">
+      <input type="checkbox" onchange="toggleExtra('${itemId}',${i},this.checked)">
+      <span>${ex.ar} <b>+${p}</b></span>
+    </label>`;
+  }).join('');
+  if(!rows.trim()) return '';
+  return `<div class="extras-box">
+    <div class="extras-title">➕ إضافات (اختياري)</div>
+    ${rows}
+  </div>`;
+}
+
+function selectSize(itemId, label, price){
+  const st = itemState[itemId];
+  st.sizeLabel = label;
+  st.sizePrice = price;
+  Object.keys(st.extras).forEach(k => st.extras[k] = false);
+  const wrap = document.getElementById('extras_' + itemId);
+  if(wrap) wrap.innerHTML = extrasHtml(itemId);
+
+  // Show the "half & half" option only when the largest size is selected;
+  // hide (and reset) it otherwise.
+  const item = itemDefs[itemId];
+  const halfWrap = document.getElementById('halfwrap_' + itemId);
+  if(item._isPizza && halfWrap){
+    if(label === item._largestLabel){
+      halfWrap.style.display = '';
+    } else {
+      halfWrap.style.display = 'none';
+      if(st.half){
+        st.half = false;
+        st.halfWith = null;
+        const cb = halfWrap.querySelector('input[type="checkbox"]');
+        if(cb) cb.checked = false;
+        const sel = document.getElementById('halfselect_' + itemId);
+        if(sel) sel.style.display = 'none';
+      }
+    }
+  }
+  updatePriceDisplay(itemId);
+}
+
+function toggleHalf(itemId, checked){
+  const st = itemState[itemId];
+  const item = itemDefs[itemId];
+  st.half = checked;
+  const sel = document.getElementById('halfselect_' + itemId);
+  const sizeRow = document.getElementById('sizerow_' + itemId);
+  const extrasWrap = document.getElementById('extras_' + itemId);
+
+  if(checked){
+    // Lock the size to the largest tier while half & half is active
+    const largest = item.sizes[item.sizes.length - 1];
+    st.sizeLabel = largest[0];
+    st.sizePrice = largest[1];
+    if(sizeRow){
+      sizeRow.querySelectorAll('input[type="radio"]').forEach((r,i)=>{
+        r.checked = (i === item.sizes.length - 1);
+        r.disabled = true;
+      });
+    }
+    // Extras aren't supported in half & half mode — keep it simple/clear on price
+    Object.keys(st.extras).forEach(k => st.extras[k] = false);
+    if(extrasWrap) extrasWrap.style.display = 'none';
+
+    // Populate partner dropdown with all other eligible pizzas
+    if(sel){
+      const options = Object.keys(pizzaLargeRegistry)
+        .filter(id => id !== itemId)
+        .map(id => `<option value="${id}">${pizzaLargeRegistry[id].ar} — ${pizzaLargeRegistry[id].en}</option>`)
+        .join('');
+      sel.innerHTML = options;
+      sel.style.display = '';
+      st.halfWith = sel.value || null;
+    }
+  } else {
+    st.halfWith = null;
+    if(sizeRow){
+      sizeRow.querySelectorAll('input[type="radio"]').forEach(r => r.disabled = false);
+    }
+    if(sel) sel.style.display = 'none';
+    if(extrasWrap) extrasWrap.style.display = '';
+  }
+  updatePriceDisplay(itemId);
+}
+
+function selectHalfPartner(itemId, partnerId){
+  itemState[itemId].halfWith = partnerId;
+  updatePriceDisplay(itemId);
+}
+
+function selectDough(itemId, value){
+  itemState[itemId].dough = value;
+}
+
+function toggleOvenAdd(itemId, checked){
+  itemState[itemId].ovenAdd = checked;
+  updatePriceDisplay(itemId);
+}
+
+function toggleExtra(itemId, idx, checked){
+  itemState[itemId].extras[idx] = checked;
+  updatePriceDisplay(itemId);
+}
+
+function setNote(itemId, val){
+  itemState[itemId].note = val;
+}
+
+function changeItemQty(itemId, delta){
+  const st = itemState[itemId];
+  st.qty = Math.max(1, st.qty + delta);
+  const qEl = document.getElementById('qty_' + itemId);
+  if(qEl) qEl.textContent = st.qty;
+  updatePriceDisplay(itemId);
+}
+
+function updatePriceDisplay(itemId){
+  const total = computeItemPrice(itemId);
+  const el = document.getElementById('price_' + itemId);
+  if(el) el.textContent = total;
+}
+
+function computeItemPrice(itemId){
+  return computeUnitPrice(itemId) * itemState[itemId].qty;
+}
+
+function computeUnitPrice(itemId){
+  const item = itemDefs[itemId];
+  const st = itemState[itemId];
+
+  // Half & half: price is the higher of the two flavors' largest-size price
+  if(st.half && st.halfWith && pizzaLargeRegistry[itemId] && pizzaLargeRegistry[st.halfWith]){
+    return Math.max(pizzaLargeRegistry[itemId].price, pizzaLargeRegistry[st.halfWith].price);
+  }
+
+  let unit = st.sizePrice;
+  if(item.extras){
+    item.extras.forEach((ex,i)=>{
+      if(st.extras[i]){
+        const p = ex.prices[st.sizeLabel];
+        if(p != null) unit += p;
+      }
+    });
+  }
+  if(item._isOvenEligible && st.ovenAdd) unit += 60;
+  return unit;
+}
+
+function addItemToCart(itemId){
+  const item = itemDefs[itemId];
+  const st = itemState[itemId];
+  const extrasChosen = [];
+  let name = item.en;
+  let sizeLabel = st.sizeLabel || '';
+
+  if(st.half && st.halfWith && pizzaLargeRegistry[st.halfWith]){
+    const partner = pizzaLargeRegistry[st.halfWith];
+    name = `${item.ar} / ${partner.ar} (نص ونص)`;
+    sizeLabel = `${st.sizeLabel} — نص ونص`;
+  } else if(item.extras){
+    item.extras.forEach((ex,i)=>{
+      if(st.extras[i]){
+        const p = ex.prices[st.sizeLabel];
+        if(p != null) extrasChosen.push(`${ex.ar} (+${p})`);
+      }
+    });
+  }
+
+  if(item._isPizza && st.dough === 'حبة كاملة'){
+    extrasChosen.push('عجينة حبة كاملة');
+  }
+  if(item._isOvenEligible && st.ovenAdd){
+    extrasChosen.push('طبق فرن بالموتزاريلا (+60)');
+  }
+
+  cart.push({
+    id: 'c' + Date.now() + Math.random().toString(16).slice(2),
+    name: name,
+    size: sizeLabel,
+    extras: extrasChosen,
+    note: (st.note || '').trim(),
+    unitPrice: computeUnitPrice(itemId),
+    qty: st.qty
+  });
+
+  // reset this item's qty selector back to 1 after adding
+  st.qty = 1;
+  const qEl = document.getElementById('qty_' + itemId);
+  if(qEl) qEl.textContent = 1;
+  updatePriceDisplay(itemId);
+
+  renderCart();
+
+  // quick visual confirmation on the button, no drawer opening
+  const btn = document.querySelector(`#row_${itemId} .add-btn`);
+  if(btn){
+    const original = btn.innerHTML;
+    btn.innerHTML = '✔ اتضاف للسلة';
+    btn.disabled = true;
+    setTimeout(()=>{ btn.innerHTML = original; btn.disabled = false; }, 900);
+  }
+}
+
+menuData.forEach(section=>{
+  const pill = document.createElement('button');
+  pill.type = 'button';
+  pill.className='cat-pill';
+  pill.textContent = section.title;
+  pill.dataset.target = section.id;
+  pill.addEventListener('click', ()=> scrollToSection(section.id));
+  nav.appendChild(pill);
+
+  const sec = document.createElement('section');
+  sec.className='menu-section';
+  sec.id = section.id;
+  let html = `<div class="section-head"><h2>${section.title}</h2><span class="ar-tag">${section.ar}</span></div><div class="section-rule"></div>`;
+
+  section.groups.forEach(group=>{
+    if(group.name) html += `<div class="group-title">${group.name}</div>`;
+    if(group.note) html += `<div class="group-note">${group.note}</div>`;
+    group.items.forEach(item=>{
+      html += renderItem(item, section.id);
+    });
+  });
+
+  sec.innerHTML = html;
+  root.appendChild(sec);
+});
+
+const pills = document.querySelectorAll('.cat-pill');
+const sections = document.querySelectorAll('.menu-section');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      pills.forEach(p=>p.classList.remove('active'));
+      const active = document.querySelector(`.cat-pill[data-target="${entry.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+}, {rootMargin:"-160px 0px -70% 0px"});
+sections.forEach(s=>obs.observe(s));
+
+// ===== Cart logic =====
+let cart = [];
+
+function changeQty(id, delta){
+  const item = cart.find(c => c.id === id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ cart = cart.filter(c => c.id !== id); }
+  renderCart();
+}
+
+function removeCartItem(id){
+  cart = cart.filter(c => c.id !== id);
+  renderCart();
+}
+
+function renderCart(){
+  const wrap = document.getElementById('cartItemsWrap');
+  const footer = document.getElementById('cartFooter');
+  const badge = document.getElementById('cartBadge');
+  const totalCount = cart.reduce((a,c)=>a+c.qty,0);
+  badge.textContent = totalCount;
+
+  if(cart.length === 0){
+    wrap.innerHTML = '<div class="cart-empty">السلة فاضية - اختار من المنيو</div>';
+    footer.style.display = 'none';
+    return;
+  }
+
+  footer.style.display = 'block';
+  let total = 0;
+  wrap.innerHTML = cart.map(c=>{
+    total += c.unitPrice * c.qty;
+    return `<div class="cart-item">
+      <div>
+        <div class="cart-item-name">${c.name}</div>
+        ${c.size ? `<div class="cart-item-sub">${c.size}</div>` : ''}
+        ${c.extras && c.extras.length ? `<div class="cart-item-extras">+ ${c.extras.join('، ')}</div>` : ''}
+        ${c.note ? `<div class="cart-item-note">📝 ${c.note}</div>` : ''}
+      </div>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty('${c.id}',-1)">−</button>
+        <span class="qty-num">${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${c.id}',1)">+</button>
+      </div>
+      <div class="cart-item-price">${c.unitPrice * c.qty} ج.م</div>
+    </div>`;
+  }).join('');
+  document.getElementById('cartTotal').textContent = total + ' ج.م';
+}
+
+function openCart(){ document.getElementById('cartOverlay').classList.add('open'); }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); }
+
+document.getElementById('cartOpenBtn').addEventListener('click', openCart);
+document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'cartOverlay') closeCart();
+});
+
+document.getElementById('sendOrderBtn').addEventListener('click', ()=>{
+  if(cart.length === 0) return;
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+
+  if(!name || !phone || !address){
+    alert('من فضلك اكتب الاسم ورقم الموبايل والعنوان قبل إرسال الطلب');
+    return;
+  }
+
+  let msg = `🍝 *طلب جديد - Pasta Ria*\n\n`;
+  let total = 0;
+  cart.forEach(c=>{
+    const line = c.unitPrice * c.qty;
+    total += line;
+    msg += `• ${c.name}${c.size ? ' ('+c.size+')' : ''} × ${c.qty} = ${line} ج.م\n`;
+    if(c.extras && c.extras.length) msg += `   + إضافات: ${c.extras.join('، ')}\n`;
+    if(c.note) msg += `   📝 ملاحظة: ${c.note}\n`;
+  });
+  msg += `\n*الإجمالي: ${total} ج.م*\n\n`;
+  msg += `👤 الاسم: ${name}\n📱 الموبايل: ${phone}\n📍 العنوان: ${address}`;
+
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/201270955559?text=${encoded}`, '_blank');
+});
+</script>
+
+</body>
+</html>
