@@ -753,7 +753,7 @@ function renderItem(item, sectionId){
       <span>🔥 حوّلها طبق فرن بالموتزاريلا <b>+60</b></span>
     </label>` : '';
 
-  const imgHtml = item.img ? `<img src="${item.img}" alt="${item.en}" class="menu-row-img" loading="lazy" onerror="this.style.display='none'">` : '';
+  const imgHtml = item.img ? `<img src="${item.img}" alt="${item.en}" class="menu-row-img" loading="eager" decoding="async" onerror="this.style.display='none'">` : '';
 
   return `<div class="menu-row" id="row_${itemId}">
     <div class="menu-row-top">
@@ -1011,7 +1011,7 @@ menuData.forEach(section=>{
 
   section.groups.forEach(group=>{
     if(group.name){
-      const groupImgHtml = group.img ? `<img src="${group.img}" alt="${group.name}" class="group-title-img" loading="lazy" onerror="this.style.display='none'">` : '';
+      const groupImgHtml = group.img ? `<img src="${group.img}" alt="${group.name}" class="group-title-img" loading="eager" decoding="async" onerror="this.style.display='none'">` : '';
       html += `<div class="group-title-wrap">${groupImgHtml}<div class="group-title">${group.name}</div></div>`;
     }
     if(group.note) html += `<div class="group-note">${group.note}</div>`;
